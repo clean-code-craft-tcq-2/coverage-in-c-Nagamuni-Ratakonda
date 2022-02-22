@@ -8,4 +8,14 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(PASSIVE_COOLING,36) == TOO_HIGH);
   REQUIRE(inferBreach(PASSIVE_COOLING,0) == NORMAL);
   REQUIRE(inferBreach(PASSIVE_COOLING,35) == NORMAL);
+  
+  REQUIRE(inferBreach(HI_ACTIVE_COOLING,-1) == TOO_LOW);
+  REQUIRE(inferBreach(HI_ACTIVE_COOLING,46) == TOO_HIGH);
+  REQUIRE(inferBreach(HI_ACTIVE_COOLING,0) == NORMAL);
+  REQUIRE(inferBreach(HI_ACTIVE_COOLING,45) == NORMAL);
+  
+  REQUIRE(inferBreach(MED_ACTIVE_COOLING,-1) == TOO_LOW);
+  REQUIRE(inferBreach(MED_ACTIVE_COOLING,41) == TOO_HIGH);
+  REQUIRE(inferBreach(MED_ACTIVE_COOLING,0) == NORMAL);
+  REQUIRE(inferBreach(MED_ACTIVE_COOLING,40) == NORMAL);
 }
