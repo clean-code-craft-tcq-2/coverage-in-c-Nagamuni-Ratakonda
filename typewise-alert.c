@@ -1,10 +1,14 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
+void (*alertTarget_FuncPtr[])(BreachType)={sendToController,sendToEmail};
+
 CoolingTypeLimits coolingTypeParameterLimit[] = {{PASSIVECOOLING_LOWERLIMIT,PASSIVECOOLING_UPPERLIMIT },
                                                {HI_ACTIVECOOLING_LOWERLIMIT,HI_ACTIVECOOLING_UPPERLIMIT},
                                                {MED_ACTIVECOOLING_LOWERLIMIT,MED_ACTIVECOOLING_UPPERLIMIT}
                                               };
+
+const char* BreachTypeParameters[] = {"NORMAL","TOO_LOW","TOO_HIGH"}
 
 
 BreachType inferBreach(CoolingType coolingType, double temperatureInC) {
@@ -21,14 +25,8 @@ void checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
   BreachType breachType = inferBreach(batteryChar.coolingType,temperatureInC);
-
-  switch(alertTarget) {
-    case TO_CONTROLLER:
-      sendToController(breachType);
-      break;
-    case TO_EMAIL:
-      sendToEmail(breachType);
-      break;
+  alertTarget_FuncPtr[alertTarget](breachType);
+  
   }
 }
 
@@ -39,16 +37,7 @@ void sendToController(BreachType breachType) {
 
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
-  switch(breachType) {
-    case TOO_LOW:
       printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too low\n");
-      break;
-    case TOO_HIGH:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too high\n");
-      break;
-    case NORMAL:
-      break;
+      printf("Hi, the temperature is %s\n",BreachTypeParameters[breachType]);
   }
 }
