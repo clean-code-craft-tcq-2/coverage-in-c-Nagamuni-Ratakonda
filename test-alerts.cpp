@@ -20,14 +20,14 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(MED_ACTIVE_COOLING,40) == NORMAL);
 }
 
-TEST_CASE("Check and alert if there is a breach") {
+TEST_CASE("Check and alert if there is a breach via controller") {
   AlertTarget alertTarget = TO_CONTROLLER;
   BatteryCharacter batteryChar = {PASSIVE_COOLING,"BatteryBrandXYZ"};
   double temperatureInC = PASSIVECOOLING_LOWERLIMIT ;
   REQUIRE(checkAndAlert(alertTarget, batteryChar, temperatureInC) == NORMAL);
 }
 
-TEST_CASE("Check and alert if there is a breach") {
+TEST_CASE("Check and alert if there is a breach via email") {
   AlertTarget alertTarget = TO_EMAIL;
   BatteryCharacter batteryChar = {PASSIVE_COOLING,"BatteryBrandXYZ"};
   double temperatureInC = PASSIVECOOLING_LOWERLIMIT ;
