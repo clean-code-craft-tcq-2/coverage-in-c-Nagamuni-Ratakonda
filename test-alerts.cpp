@@ -26,3 +26,10 @@ TEST_CASE("Check and alert if there is a breach") {
   double temperatureInC = PASSIVECOOLING_LOWERLIMIT ;
   REQUIRE(checkAndAlert(alertTarget, batteryChar, temperatureInC) == NORMAL);
 }
+
+TEST_CASE("Check and alert if there is a breach") {
+  AlertTarget alertTarget = TO_EMAIL;
+  BatteryCharacter batteryChar = {PASSIVE_COOLING,"BatteryBrandXYZ"};
+  double temperatureInC = PASSIVECOOLING_LOWERLIMIT ;
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, temperatureInC) == NORMAL);
+}
