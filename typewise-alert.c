@@ -8,7 +8,7 @@ CoolingTypeLimits coolingTypeParameterLimit[] = {{PASSIVECOOLING_LOWERLIMIT,PASS
                                                {MED_ACTIVECOOLING_LOWERLIMIT,MED_ACTIVECOOLING_UPPERLIMIT}
                                               };
 
-const char* BreachTypeParameters[] = {"NORMAL","TOO_LOW","TOO_HIGH"}
+const char* BreachTypeParameters[] = {"NORMAL","TOO_LOW","TOO_HIGH"};
 
 
 BreachType inferBreach(CoolingType coolingType, double temperatureInC) {
