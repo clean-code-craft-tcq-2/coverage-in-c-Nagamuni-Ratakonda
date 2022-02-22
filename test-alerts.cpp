@@ -52,7 +52,7 @@ TEST_CASE("Check and alert if there is a breach in MED_Active cooling via contro
   
 }
 
-TEST_CASE("Check and alert if there is a breach in Passive cooling via controller") {
+TEST_CASE("Check and alert if there is a breach in Passive cooling via Email") {
   AlertTarget alertTarget = TO_EMAIL;
   BatteryCharacter batteryChar = {PASSIVE_COOLING,"BatteryBrandXYZ"};
   REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
@@ -62,7 +62,7 @@ TEST_CASE("Check and alert if there is a breach in Passive cooling via controlle
   
 }
 
-TEST_CASE("Check and alert if there is a breach in HI_Active cooling via controller") {
+TEST_CASE("Check and alert if there is a breach in HI_Active cooling via Email") {
   AlertTarget alertTarget = TO_EMAIL;
   BatteryCharacter batteryChar = {HI_ACTIVE_COOLING,"BatteryBrandXYZ"};
   REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
@@ -72,7 +72,7 @@ TEST_CASE("Check and alert if there is a breach in HI_Active cooling via control
   
 }
 
-TEST_CASE("Check and alert if there is a breach in MED_Active cooling via controller") {
+TEST_CASE("Check and alert if there is a breach in MED_Active cooling via Email") {
   AlertTarget alertTarget = TO_EMAIL;
   BatteryCharacter batteryChar = {MED_ACTIVE_COOLING,"BatteryBrandXYZ"};
   REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
