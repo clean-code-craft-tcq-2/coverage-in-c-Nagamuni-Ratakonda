@@ -52,11 +52,34 @@ TEST_CASE("Check and alert if there is a breach in MED_Active cooling via contro
   
 }
 
-/*
-TEST_CASE("Check and alert if there is a breach via email") {
+TEST_CASE("Check and alert if there is a breach in Passive cooling via controller") {
   AlertTarget alertTarget = TO_EMAIL;
   BatteryCharacter batteryChar = {PASSIVE_COOLING,"BatteryBrandXYZ"};
-  double temperatureInC = PASSIVECOOLING_LOWERLIMIT ;
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, temperatureInC) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 36 ) == TOO_HIGH);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 0) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 35) == NORMAL);
+  
 }
-*/
+
+TEST_CASE("Check and alert if there is a breach in HI_Active cooling via controller") {
+  AlertTarget alertTarget = TO_EMAIL;
+  BatteryCharacter batteryChar = {HI_ACTIVE_COOLING,"BatteryBrandXYZ"};
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 46 ) == TOO_HIGH);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 0) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 45) == NORMAL);
+  
+}
+
+TEST_CASE("Check and alert if there is a breach in MED_Active cooling via controller") {
+  AlertTarget alertTarget = TO_EMAIL;
+  BatteryCharacter batteryChar = {MED_ACTIVE_COOLING,"BatteryBrandXYZ"};
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 41 ) == TOO_HIGH);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 0) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 40) == NORMAL);
+  
+}
+
+
