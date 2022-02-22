@@ -3,6 +3,7 @@
 #include "test/catch.hpp"
 #include "typewise-alert.h"
 
+/*
 TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(PASSIVE_COOLING,-1) == TOO_LOW);
   REQUIRE(inferBreach(PASSIVE_COOLING,36) == TOO_HIGH);
@@ -19,11 +20,16 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(MED_ACTIVE_COOLING,0) == NORMAL);
   REQUIRE(inferBreach(MED_ACTIVE_COOLING,40) == NORMAL);
 }
+*/
 
 TEST_CASE("Check and alert if there is a breach via controller") {
   AlertTarget alertTarget = TO_CONTROLLER;
   BatteryCharacter batteryChar = {PASSIVE_COOLING,"BatteryBrandXYZ"};
-  double temperatureInC = PASSIVECOOLING_LOWERLIMIT ;
+  double temperatureInC = PASSIVECOOLING_LOWERLIMIT;
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, temperatureInC) == NORMAL);
+  
+  batteryChar = {HI_ACTIVE_COOLING,"BatteryBrandXYZ"};
+  temperatureInC = HI_ACTIVECOOLING_LOWERLIMIT;
   REQUIRE(checkAndAlert(alertTarget, batteryChar, temperatureInC) == NORMAL);
 }
 
