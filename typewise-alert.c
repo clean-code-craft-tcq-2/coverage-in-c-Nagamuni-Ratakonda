@@ -27,7 +27,6 @@ void checkAndAlert(
   BreachType breachType = inferBreach(batteryChar.coolingType,temperatureInC);
   alertTarget_FuncPtr[alertTarget](breachType);
   
-  }
 }
 
 void sendToController(BreachType breachType) {
