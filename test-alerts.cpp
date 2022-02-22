@@ -55,30 +55,30 @@ TEST_CASE("Check and alert if there is a breach in MED_Active cooling via contro
 TEST_CASE("Check and alert if there is a breach in Passive cooling via Email") {
   AlertTarget alertTarget = TO_EMAIL;
   BatteryCharacter batteryChar = {PASSIVE_COOLING,"BatteryBrandXYZ"};
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 36 ) == TOO_HIGH);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 0) == NORMAL);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 35) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, -10) == TOO_LOW);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 50) == TOO_HIGH);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 10) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 34) == NORMAL);
   
 }
 
 TEST_CASE("Check and alert if there is a breach in HI_Active cooling via Email") {
   AlertTarget alertTarget = TO_EMAIL;
   BatteryCharacter batteryChar = {HI_ACTIVE_COOLING,"BatteryBrandXYZ"};
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 46 ) == TOO_HIGH);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 0) == NORMAL);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 45) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, -5) == TOO_LOW);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 50 ) == TOO_HIGH);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 15) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 43) == NORMAL);
   
 }
 
 TEST_CASE("Check and alert if there is a breach in MED_Active cooling via Email") {
   AlertTarget alertTarget = TO_EMAIL;
   BatteryCharacter batteryChar = {MED_ACTIVE_COOLING,"BatteryBrandXYZ"};
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, -1) == TOO_LOW);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 41 ) == TOO_HIGH);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 0) == NORMAL);
-  REQUIRE(checkAndAlert(alertTarget, batteryChar, 40) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, -50) == TOO_LOW);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 100) == TOO_HIGH);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 20) == NORMAL);
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, 39) == NORMAL);
   
 }
 
