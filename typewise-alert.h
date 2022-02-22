@@ -27,7 +27,7 @@ typedef struct{
 }CoolingTypeLimits;
 
 typedef struct{
-  CoolingType coolingTypeParameter,
+  CoolingType coolingTypeParameter;
   CoolingTypeLimits coolingTypeParameterLimit;
 }CoolingTypeInfo;
   
