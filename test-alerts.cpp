@@ -19,3 +19,12 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(MED_ACTIVE_COOLING,0) == NORMAL);
   REQUIRE(inferBreach(MED_ACTIVE_COOLING,40) == NORMAL);
 }
+
+TEST_CASE("Check and alert if there is a breach") {
+  AlertTarget alertTarget = TO_CONTROLLER;
+  BatteryCharacter batteryChar;
+  batteryChar.coolingType = PASSIVE_COOLING;
+  batteryChar.brand = "BatteryBrandXYZ";
+  double temperatureInC = PASSIVECOOLING_LOWERLIMIT ;
+  REQUIRE(checkAndAlert(alertTarget, batteryChar, temperatureInC) == NORMAL);
+}
