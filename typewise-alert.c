@@ -11,7 +11,7 @@ BreachType inferBreach(CoolingType coolingType, double temperatureInC) {
   if(temperatureInC < coolingTypeParameterLimit[coolingType].lowerLimit) {
     return TOO_LOW;
   }
-  if(temperatureInC < coolingTypeParameterLimit[coolingType].upperLimit)) {
+  if(temperatureInC < coolingTypeParameterLimit[coolingType].upperLimit) {
     return TOO_HIGH;
   }
   return NORMAL;
