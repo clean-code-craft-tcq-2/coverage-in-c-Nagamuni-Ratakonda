@@ -80,4 +80,11 @@ TEST_CASE("Classify and set temperature breach limits according to cooling type"
   REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,40) == NORMAL);
 }
 
+TEST_CASE("infers the breach according to limits") {
+  REQUIRE(inferBreach(12, 20, 30) == TOO_LOW);
+  REQUIRE(inferBreach(50, 0, 40) == TOO_HIGH);
+  REQUIRE(inferBreach(10, 0, 40) == NORMAL);
+
+}
+
 
