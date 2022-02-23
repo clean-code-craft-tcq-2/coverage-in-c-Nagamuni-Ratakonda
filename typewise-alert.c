@@ -11,14 +11,21 @@ CoolingTypeLimits coolingTypeParameterLimit[] = {{PASSIVECOOLING_LOWERLIMIT,PASS
 const char* BreachTypeParameters[] = {"NORMAL","TOO_LOW","TOO_HIGH"};
 
 
-BreachType inferBreach(CoolingType coolingType, double temperatureInC) {
-  if(temperatureInC < coolingTypeParameterLimit[coolingType].lowerLimit) {
+BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
+  if(value < lowerLimit) {
     return TOO_LOW;
   }
-  if(temperatureInC > coolingTypeParameterLimit[coolingType].upperLimit) {
+  if(value > upperLimit) {
     return TOO_HIGH;
   }
   return NORMAL;
+}
+
+BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
+  int lowerLimit = coolingTypeParameterLimit[coolingType].lowerLimit;
+  int upperLimit = coolingTypeParameterLimit[coolingType].upperLimit;
+
+  return (inferBreach(temperatureInC, lowerLimit, upperLimit));
 }
 
 BreachType checkAndAlert(
