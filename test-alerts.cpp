@@ -63,4 +63,21 @@ TEST_CASE("Check and alert if there is a breach in MED_Active cooling via Email"
   
 }
 
+TEST_CASE("Classify and set temperature breach limits according to cooling type") {
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,-1) == TOO_LOW);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,36) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,0) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,35) == NORMAL);
+  
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,-1) == TOO_LOW);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,46) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,0) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,45) == NORMAL);
+  
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,-1) == TOO_LOW);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,41) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,0) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,40) == NORMAL);
+}
+
 
