@@ -28,6 +28,7 @@ typedef struct{
 }CoolingTypeLimits;
 
 BreachType inferBreach(CoolingType coolingType, double temperatureInC);
+BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
 
 typedef enum {
   TO_CONTROLLER,
